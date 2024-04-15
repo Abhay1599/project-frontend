@@ -1,46 +1,60 @@
 <section>
-  <div class=" container-fluid py-5 px-5">
-    <p-table #dt [value]="movies" [resizableColumns]="false" [scrollable]="true" [paginator]="true" [rows]="request.rows"
-      [first]="request.first" [lazy]="true" (onLazyLoad)="loadMovies($event)" [loading]="loading"
-      [totalRecords]="totalRecords" [rowsPerPageOptions]="[10,50,100,200]" [autoLayout]="true"
-      [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-      responsiveLayout="stack" [breakpoint]="'960px'" [rowHover]="true" dataKey="_id">
-      <ng-template pTemplate="caption">
-        <div class="flex">
-          <span class="p-input-icon-left ml-auto">
-            <i class="pi pi-search"></i>
-            <input pInputText type="text" (input)="filterMoviesByTitle()" [(ngModel)]="globalFilter"
-              placeholder="Search Title" />
-          </span>
-        </div>
-      </ng-template>
-      <ng-template pTemplate="header">
-        <tr>
-          <th>Title</th>
-          <th>Languages</th>
-          <th>Year</th>
-          <th>Genres</th>
-          <th>Directors</th>
-          <th>Cast</th>
-          <th>Posters</th>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-movie>
-        <tr>
-          <td>{{ movie.title }}</td>
-          <td>{{ movie.languages }}</td>
-          <td>{{ movie.year }}</td>
-          <td>{{ movie.genres }}</td>
-          <td>{{ movie.directors }}</td>
-          <td>{{ movie.cast }}</td>
-          <td><img src="{{ movie.poster }}" alt="..." width="25" height="25" class="" loading="lazy"></td>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="emptymessage">
-        <tr>
-          <td colspan="5">No movies found.</td>
-        </tr>
-      </ng-template>
-    </p-table>
+  <div class="container-fluid p-5">
+    <div class="row justify-content-center align-items-center">
+      <div class="test-ptable px-0">
+        <p-table #dt [value]="movies" [resizableColumns]="false" [scrollable]="true" [paginator]="true"
+          [rows]="request.rows" [first]="request.first" [lazy]="true" (onLazyLoad)="loadMovies($event)"
+          [loading]="loading" [totalRecords]="totalRecords" [rowsPerPageOptions]="[5,10,50,100]" [autoLayout]="true"
+          [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+          responsiveLayout="stack" [breakpoint]="'960px'" [rowHover]="true" dataKey="_id">
+          <ng-template pTemplate="caption">
+            <div class="flex d-flex justify-content-end">
+              <span class="p-input-icon-left ml-auto">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="filterMoviesByTitle()" [(ngModel)]="globalFilter"
+                  placeholder="Search Title" class="search-p" />
+              </span>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Title</th>
+              <th>Languages</th>
+              <th>Year</th>
+              <th>Awards</th>
+              <th>Genres</th>
+              <th>Directors</th>
+              <th>Cast</th>
+              <th>Views</th>
+              <th>Imdb</th>
+              <th>Comments</th>
+              <th>Posters</th>
+
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-movie>
+            <tr>
+              <td>{{ movie.title }}</td>
+              <td>{{ movie.languages }}</td>
+              <td>{{ movie.year }}</td>
+              <td>{{ movie.awards.wins }}</td>
+              <td>{{ movie.genres }}</td>
+              <td>{{ movie.directors }}</td>
+              <td>{{ movie.cast }}</td>
+              <td>{{ movie.tomatoes.viewer.numReviews }}</td>
+              <td>{{ movie.imdb.rating }}</td>
+              <td>{{ movie.num_mflix_comments }}</td>
+              <td><img src="{{ movie.poster }}" alt="..." width="50" height="75" class="" loading="lazy"></td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+            <tr>
+              <td colspan="5">No movies found.</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
   </div>
+
 </section>

@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
   request: RequestBody = {
     // Default request parameters for movie data
     first: 0,
-    rows: 10,
+    rows: 5,
     filter: {
       title: "",
     },
