@@ -1,0 +1,67 @@
+<div class="container-fluid vh-100 d-flex align-items-center justify-content-center">
+    <div class="col-md-6">
+        <!-- Registration form with formGroup Directive for Reactive Forms -->
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="card p-4 shadow">
+            <h1 class="h3 mb-3 fw-normal text-center">
+                Create an account and elevate your experience!
+            </h1>
+
+            <!-- Name Input -->
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="nameInput" formControlName="name" placeholder="Name">
+                <label for="nameInput">Name</label>
+                <!-- Error Message for Name -->
+                <div *ngIf="registerForm.controls['name'].invalid && registerForm.controls['name'].touched" class="text-danger">
+                    Please enter name.
+                </div>
+            </div>
+
+            <!-- Email Input -->
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="emailInput" formControlName="email" placeholder="Email">
+                <label for="emailInput">Email</label>
+                <!-- Error Message for Email -->
+                <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched" class="text-danger">
+                    Please enter a valid email.
+                </div>
+            </div>
+
+            <!-- Password Input -->
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="passwordInput" formControlName="password" placeholder="Password">
+                <label for="passwordInput">Password</label>
+                <!-- Error Message for Password -->
+                <div *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched" class="text-danger">
+                    Password is required.
+                </div>
+            </div>
+
+            <!-- Confirm Password Input -->
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="confirmPasswordInput" formControlName="confirmPassword" placeholder="Confirm Password">
+                <label for="confirmPasswordInput">Confirm Password</label>
+                <!-- Error Message for Confirm Password -->
+                <div *ngIf="registerForm.controls['confirmPassword'].invalid && registerForm.controls['confirmPassword'].touched" class="text-danger">
+                    Confirm Password is required
+                </div>
+                <div *ngIf="registerForm.hasError('passwordMismatch')" class="text-danger">
+                    Passwords do not match.
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="d-grid">
+                <button class="btn btn-primary btn-lg" type="submit">
+                    Sign Up
+                </button>
+            </div>
+
+            <!-- Login Redirect Link -->
+            <div class="mt-3 text-center">
+                <p class="mb-0">Already have an account?
+                    <button type="button" (click)="navigate()" class="btn btn-link text-decoration-none">Log In</button>
+                </p>
+            </div>
+        </form>
+    </div>
+</div>
