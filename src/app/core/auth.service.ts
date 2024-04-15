@@ -15,7 +15,9 @@ import { isPlatformBrowser } from "@angular/common";
   providedIn: "root", // Specifies that the service should be provided in the root injector.
 })
 export class AuthService {
-  endpoint: string = "http://localhost:3000"; // Base URL for the API.
+  // endpoint: string = "http://localhost:3000"; // Base URL for the API.
+  endpoint: string = "https://nice-pink-bonobo-wear.cyclic.app";
+  
   headers = new HttpHeaders().set("Content-Type", "application/json"); // Default HTTP headers for requests.
   private authStatus = new BehaviorSubject<boolean>(false);
   
