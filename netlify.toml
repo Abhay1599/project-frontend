@@ -1,8 +1,9 @@
 # example netlify.toml
 [build]
+  base= "frontend"
   command = "ng build"
   functions = "netlify/functions"
-  publish = "dist/project/browser"
+  publish = "dist/browser"
 
   ## Uncomment to use this redirect for Single Page Applications like create-react-app.
   ## Not needed for static site generators.
